@@ -5,6 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import LogScreen from '../screens/LogScreen';
 import ReportScreen from '../screens/ReportScreen';
+import RecommendScreen from '../screens/RecommendScreen';
 import AchievementScreen from '../screens/AchievementScreen';
 import DoctorAiScreen from '../screens/DoctorAiScreen';
 
@@ -50,6 +51,20 @@ ReportStack.navigationOptions = {
   ),
 };
 
+const RecommendStack = createStackNavigator({
+  Recommend: RecommendScreen,
+})
+
+RecommendStack.navigationOptions = {
+  tabBarLabel: 'Recommend',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name='thumbs-up'
+    />
+  ),
+}
+
 const AchievementStack = createStackNavigator({
   Settings: AchievementScreen,
 });
@@ -69,6 +84,7 @@ export default createBottomTabNavigator({
   DoctorAiStack,
   LogStack,
   ReportStack,
+  RecommendStack,
   AchievementStack,
 }, { tabBarOptions: {
   activeTintColor: '#D31146'
