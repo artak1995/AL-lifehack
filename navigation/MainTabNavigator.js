@@ -6,6 +6,21 @@ import TabBarIcon from '../components/TabBarIcon';
 import LogScreen from '../screens/LogScreen';
 import ReportScreen from '../screens/ReportScreen';
 import AchievementScreen from '../screens/AchievementScreen';
+import DoctorAiScreen from '../screens/DoctorAiScreen';
+
+const DoctorAiStack = createStackNavigator({
+  DoctorAi: DoctorAiScreen,
+});
+
+DoctorAiStack.navigationOptions = {
+  tabBarLabel: 'Doctor AI',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name='commenting-o'
+    />
+  ),
+};
 
 const LogStack = createStackNavigator({
   Log: LogScreen,
@@ -51,6 +66,7 @@ AchievementStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
+  DoctorAiStack,
   LogStack,
   ReportStack,
   AchievementStack,
