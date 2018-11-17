@@ -3,6 +3,8 @@ import { ScrollView, StyleSheet, Text, Image, View } from 'react-native';
 import Colors from '../constants/Colors';
 const userImg = require('../assets/images/user.png')
 
+import RoundButton from '../components/RoundButton';
+
 export default class ReportScreen extends React.Component {
   static navigationOptions = {
     title: 'Weekly Log Book',
@@ -16,6 +18,7 @@ export default class ReportScreen extends React.Component {
         <View style={styles.center}>
           <Image source={userImg} style={styles.user}></Image>
         </View>
+        <RoundButton>Click</RoundButton>
       </ScrollView>
     );
   }
