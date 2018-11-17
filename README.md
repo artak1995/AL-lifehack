@@ -8,6 +8,9 @@ Clone the project
 install modules
 `npm install`
 
+install expo-cli
+`npm install expo-cli -g`
+
 Ready to go, you can start the project by
 `expo start`
 
