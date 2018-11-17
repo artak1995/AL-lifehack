@@ -12,7 +12,7 @@ export default class ReportScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.header}>Weekly Health Overview</Text>
+        <Text style={styles.header}>Common Disease to look out for with same age, gender and lifestyle.</Text>
         <View style={styles.center}>
           <Image source={userImg} style={styles.user}></Image>
         </View>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     color: Colors.headerColor,
     fontSize: 17,
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: '200',
   },
   center: {
     justifyContent: 'center',
