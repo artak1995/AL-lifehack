@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 14,
-    color: '#d3d3d3',
+    color: '#5f5f5f',
   }
 });

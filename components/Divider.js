@@ -4,10 +4,10 @@ import { View, Text, StyleSheet } from 'react-native';
 const Divider = (props) => {
   if (props.type === 'strike') {
     return (
-      <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-        <View style={{...styles.divider, width: '20%', marginVertical: 0}} />
+      <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginVertical: 10 }}>
+        <View style={{...styles.divider, width: '21%', marginVertical: 0}} />
         <Text style={{...props.style, paddingHorizontal: 15}}>{props.children}</Text>
-        <View style={{...styles.divider, width: '20%', marginVertical: 0}} />
+        <View style={{...styles.divider, width: '21%', marginVertical: 0}} />
       </View>
     );
   }
