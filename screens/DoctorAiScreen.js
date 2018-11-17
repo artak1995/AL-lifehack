@@ -10,15 +10,20 @@ export default class DoctorAiScreen extends React.Component {
     title: 'Doctor AI',
     headerTintColor: Colors.tintColor,
   };
-  state = {
-    messages: [],
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [],
+      count: 1,
+    };
   }
+
 
   componentWillMount() {
     this.setState({
       messages: [
         {
-          _id: 1,
+          _id: this.state.count,
           text: 'Welcome back, Mark! Do you want to start a symptom assessment?',
           createdAt: new Date(),
           user: {
@@ -32,9 +37,63 @@ export default class DoctorAiScreen extends React.Component {
   }
 
   onSend(messages = []) {
+    console.log('hello', messages[0].text.includes('stomache'));
+    console.log(this.state.count)
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }))
+    this.setState(previousState => ({
+      count: previousState.count
+    }))
+    console.log(this.state.count)
+    if (messages[0].text.includes('stomache')){
+
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, [
+          {
+            _id: this.state.count + 1,
+            text: 'Ongoing vomiting or diarrhea',
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: 'Doctor AI',
+              avatar: doctorImg,
+            },
+          },
+          {
+            _id: this.state.count + 2,
+            text: 'Blood when you have a bowel movement',
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: 'Doctor AI',
+              avatar: doctorImg,
+            },
+          },
+          {
+            _id: this.state.count + 3,
+            text: 'Unintended weight loss',
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: 'Doctor AI',
+              avatar: doctorImg,
+            },
+          },
+          {
+            _id: this.state.count + 4,
+            text: 'You are having stomach disorders three times in this month, you should go to a doctor if you have any of the followings',
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: 'Doctor AI',
+              avatar: doctorImg,
+            },
+          },
+
+        ],),
+      }))
+    }
   }
 
   render() {
