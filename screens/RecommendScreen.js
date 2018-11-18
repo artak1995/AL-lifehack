@@ -41,7 +41,7 @@ const recommendationMenus = [
   { title: 'Others', icon: 'gift' },
 ]
 
-class RecommendScreen extends React.Component {
+export class RecommendScreen extends React.Component {
   static navigationOptions = {
     title: 'Recommendations',
     headerTintColor: Colors.tintColor,

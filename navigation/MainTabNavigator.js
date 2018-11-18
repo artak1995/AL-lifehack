@@ -60,7 +60,7 @@ RecommendStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name='thumbs-up'
+      name='heartbeat'
     />
   ),
 }
@@ -83,7 +83,7 @@ AchievementStack.navigationOptions = {
 export default createBottomTabNavigator({
   DoctorAiStack,
   LogStack,
-  ReportStack,
+  // ReportStack,
   RecommendStack,
   AchievementStack,
 }, { tabBarOptions: {
