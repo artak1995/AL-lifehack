@@ -7,7 +7,7 @@ import { KeyboardAvoidingView } from 'react-native';
 
 export default class DoctorAiScreen extends React.Component {
   static navigationOptions = {
-    title: 'Doctor AI',
+    title: 'Smart Medical Consultant',
     headerTintColor: Colors.tintColor,
   };
   constructor(props) {
@@ -46,7 +46,7 @@ export default class DoctorAiScreen extends React.Component {
       count: previousState.count
     }))
     console.log(this.state.count)
-    if (messages[0].text.includes('stomache')){
+    if (messages[0].text.includes('stomachache')){
 
       this.setState(previousState => ({
         messages: GiftedChat.append(previousState.messages, [
@@ -82,7 +82,7 @@ export default class DoctorAiScreen extends React.Component {
           },
           {
             _id: this.state.count + 4,
-            text: 'You are having stomach disorders three times in this month, you should go to a doctor if you have any of the followings',
+            text: 'You are having stomachache disorders three times in this month, you should go to a doctor if you have any of the followings',
             createdAt: new Date(),
             user: {
               _id: 2,
