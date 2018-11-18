@@ -1,9 +1,13 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, Image, View } from 'react-native';
 import Divider from '../components/Divider';
+import IconBlockView from '../components/IconBlockView';
+import {Button} from 'native-base';
 import Colors from '../constants/Colors';
 const userImg = require('../assets/images/user.png');
 const ocrImg = require('../assets/images/ocr.png');
+const tickImg = require('../assets/images/green-tick.png');
+const crossImg = require('../assets/images/red-cross.png');
 
 export default class ReportScreen extends React.Component {
   static navigationOptions = {
@@ -12,6 +16,18 @@ export default class ReportScreen extends React.Component {
   };
 
   render() {
+    const coveredHealthIssues = [
+      { title: 'High Cholesterol', icon: 'highCholesterol', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'Arthritis', icon: 'arthritis', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'Chronic Kidney Disease', icon: 'chronicKidney', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'Pulmonary Disease', icon: 'pulmonary', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+    ];
+
+    const notCoveredHealthIssues = [
+      { title: 'Ischemic Heart Disease', icon: 'heartDisease', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'High Blood Pressure', icon: 'bloodPressure', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+    ];
+
     return (
       <ScrollView style={styles.container} contentContainerStyle={styles.center}>
         <Text style={[styles.header]}>Common Disease to look out for with same age, gender and lifestyle.</Text>
@@ -22,9 +38,41 @@ export default class ReportScreen extends React.Component {
         <Divider style={styles.header} type={'strike'}>Current Insurance Plan</Divider>
         <View style={{textAlign: 'left', alignSelf: 'flex-start'}}>
           <Text style={styles.plan}>SUPER GOOD HEALTH MEDICAL PLAN 2</Text>
-          <Text style={styles.description}>Medical Protection</Text>
+          <Text style={styles.plan_description}>Medical Protection</Text>
         </View>
         <Divider />
+        <View style={{alignSelf: 'flex-start', flexDirection: 'row'}}>
+          <Image style={{marginRight: 10, marginBottom: 10}} source={tickImg}></Image>
+          <Text style={styles.cover_header}>Covered By Plan</Text>
+        </View>
+        { coveredHealthIssues.map(issue => {
+          return (
+            <IconBlockView iconName={issue.icon}>
+              <Text style={styles.issue_title}>{issue.title}</Text>
+              <Text style={styles.issue_cost}>{issue.cost}</Text>
+              <Text style={styles.issue_description}>{issue.description}</Text>
+            </IconBlockView>
+          )
+        })}
+        <Divider />
+        <View style={{alignSelf: 'flex-start', flexDirection: 'row'}}>
+          <Image style={{marginRight: 10, marginBottom: 10}} source={crossImg}></Image>
+          <Text style={styles.not_cover_header}>Not Covered By Plan</Text>
+        </View>
+        { notCoveredHealthIssues.map(issue => {
+          return (
+            <IconBlockView iconName={issue.icon}>
+              <Text style={styles.not_issue_title}>{issue.title}</Text>
+              <Text style={styles.issue_cost}>{issue.cost}</Text>
+              <Text style={styles.issue_description}>{issue.description}</Text>
+            </IconBlockView>
+          )
+        })}
+        <View>
+          <Button block rounded style={styles.button}>
+            <Text style={styles.buttonText}>Upgrade My Plan</Text>
+          </Button>
+        </View>
       </ScrollView>
     );
   }
@@ -43,6 +91,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     marginVertical: 10
+  },
+  cover_header: {
+    color: Colors.successColor,
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  not_cover_header: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: Colors.tintColor,
   },
   center: {
     justifyContent: 'center',
@@ -64,10 +122,33 @@ const styles = StyleSheet.create({
   plan: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: Colors.tintColor
+    color: Colors.tintColor,
+    marginBottom: 5
   },
-  description: {
+  plan_description: {
     fontSize: 14,
     color: '#5f5f5f',
+  },
+  issue_title: {
+    fontSize: 16,
+    color: Colors.successColor,
+    fontWeight: 'bold'
+  },
+  not_issue_title: {
+    fontSize: 16,
+    color: Colors.tintColor,
+    fontWeight: 'bold'
+  },
+  button: {
+    marginTop: 15,
+    backgroundColor: Colors.tintColor,
+    width: 180,
+    marginBottom: 30
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold'
   }
 });
