@@ -3,9 +3,11 @@ import { Text, Image, View } from 'react-native';
 import Icon from './Icon';
 
 const containerStyle = () => ({
-  flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
+  alignSelf: 'flex-start',
+  marginBottom: 20,
+  width: '100%'
 });
 
 const iconStyle = () => ({
@@ -15,7 +17,7 @@ const iconStyle = () => ({
 const blockStyle = ({ verticalGap = 10 }) => ({
   // backgroundColor: 'red',
   marginLeft: verticalGap,
-  width: '100%',
+  flex: 1
 });
 
 export default class IconBlockView extends React.Component {
