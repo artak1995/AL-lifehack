@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Colors from '../constants/Colors';
 import { Container, Header, Tab, Tabs, ScrollableTab } from 'native-base';
-import { Icon } from 'expo';
+// import { Icon } from 'expo';
 import Image from '../components/Icon'
 import IconBlockView from '../components/IconBlockView'
 
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   content: {
-    height: 700,
+    // height: 750,
     paddingTop: 20,
     paddingLeft: 20,
     paddingRight: 20,
@@ -62,16 +62,14 @@ const recommendationMenus = [
     icon: { name: 'supplements', width: 82, height: 82 },
     color: '#0D84B9',
     recommendations: [
-      { title: 'Supplement One', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took….'},
-      { title: 'Supplement Two', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took….'},
-      { title: 'Supplement Three', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took….'},
-      { title: 'Supplement Four', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took….'},
-      { title: 'Supplement Five', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took….' },
+      { title: 'B12 Cobalamin', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took….'},
+      { title: 'A Vitamin', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took….'},
+      { title: 'A/B12 Vitamin', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took….'},
     ]
   },
 ]
 
-export class RecommendScreen extends React.Component {
+class RecommendScreen extends React.Component {
   static navigationOptions = {
     title: 'Recommendations',
     headerTintColor: Colors.tintColor,
@@ -79,7 +77,7 @@ export class RecommendScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <Tabs
           tabBarUnderlineStyle={styles.tabUnderline}
           renderTabBar={()=> (
@@ -97,57 +95,63 @@ export class RecommendScreen extends React.Component {
                 activeTabStyle={styles.topMenu}
                 textStyle={{ color: Colors.tabIconSelected }}
                 activeTextStyle={styles.activeText}
-                style={{ transform: [{ translateY: -450 }] }}
               >
-                <View style={{
-                  backgroundColor: menu.color,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
+                <ScrollView style={{ flex: 1 }}>
                   <View style={{
-                    justifyContent: 'flex-end',
+                    position: 'relative',
+                    height: 175,
+                    width: '100%',
+                    overflow: 'hidden',
                     alignItems: 'center',
-                    borderBottomLeftRadius: 317,
-                    borderBottomRightRadius: 317,
-                    backgroundColor: '#fff',
-                    width: 635,
-                    height: 635,
                   }}>
-                    <Image
-                      iconName={menu.icon.name}
-                      style={{ width: menu.icon.width, height: menu.icon.height, marginBottom: 50 }}
-                    />
-                    {/* <Icon.MaterialCommunityIcons
-                      name={menu.icon}
-                      size={100}
-                      style={{ marginBottom: 50 }}
-                    /> */}
+                    <View style={{
+                      backgroundColor: menu.color,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      position: 'absolute',
+                      bottom: 0,
+                    }}>
+                      <View style={{
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        borderBottomLeftRadius: 317,
+                        borderBottomRightRadius: 317,
+                        backgroundColor: '#fff',
+                        width: 635,
+                        height: 635,
+                      }}>
+                        <Image
+                          iconName={menu.icon.name}
+                          style={{ width: menu.icon.width, height: menu.icon.height, marginBottom: 50 }}
+                        />
+                      </View>
+                    </View>
                   </View>
-                </View>
-                <View style={{ ...styles.content, backgroundColor: menu.color } }>
-                  {menu.recommendations.map((recommendation, i) => {
-                    return (
-                      <IconBlockView
-                        key={i}
-                        iconName="breakfastRecommendations"
-                      >
-                        <Text style={{
-                          fontWeight: 'bold',
-                          color: '#fff',
-                        }}>{recommendation.title}</Text>
-                        <Text style={{
-                          color: '#fff',
-                          marginTop: 10,
-                        }}>{recommendation.description}</Text>
-                      </IconBlockView>
-                    )
-                  })}
-                </View>
+                  <View style={{ ...styles.content, backgroundColor: menu.color } }>
+                    {menu.recommendations.map((recommendation, i) => {
+                      return (
+                        <IconBlockView
+                          key={i}
+                          iconName="breakfastRecommendations"
+                        >
+                          <Text style={{
+                            fontWeight: 'bold',
+                            color: '#fff',
+                          }}>{recommendation.title}</Text>
+                          <Text style={{
+                            color: '#fff',
+                            marginTop: 10,
+                          }}>{recommendation.description}</Text>
+                        </IconBlockView>
+                      )
+                    })}
+                  </View>
+                </ScrollView>
               </Tab>
             )
           })}
         </Tabs>
-      </ScrollView>
+      </View>
     );
   }
 }
