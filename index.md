@@ -1,37 +1,31 @@
-## Welcome to GitHub Pages
+# Lifehack 2018
 
-You can use the [editor on GitHub](https://github.com/artak1995/AL-lifehack/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+## Getting Started
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Clone the project
+`git clone`
 
-### Markdown
+install modules
+`npm install`
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+install expo-cli
+`npm install expo-cli -g`
 
-```markdown
-Syntax highlighted code block
+Ready to go, you can start the project by
+`expo start`
 
-# Header 1
-## Header 2
-### Header 3
+## Details
 
-- Bulleted
-- List
+this app is created by 
+`create-react-native-app`
+and it is created by expo
 
-1. Numbered
-2. List
+### Expo
 
-**Bold** and _Italic_ and `Code` text
+Expo is a free and open source toolchain built around React Native to help you build native iOS and Android apps using JavaScript and React
 
-[Link](url) and ![Image](src)
-```
+so you can check out the docs from expo and react-native-navigation
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Win:)
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/artak1995/AL-lifehack/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Let's get it!
