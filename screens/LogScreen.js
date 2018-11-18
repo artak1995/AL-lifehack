@@ -4,12 +4,11 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  // Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import Colors from '../constants/Colors';
+import { isIphoneX } from '../constants/Layout';
 import { Button, Text, Tab, Tabs, ScrollableTab } from 'native-base';
 const pointImg = require('../assets/images/vitalityPoint.png');
 
@@ -104,7 +103,7 @@ export default class LogScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    paddingTop: isIphoneX ? 35 : 15,
     backgroundColor: 'white',
   },
   center: {
