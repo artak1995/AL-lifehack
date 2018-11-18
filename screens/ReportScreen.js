@@ -18,14 +18,14 @@ export default class ReportScreen extends React.Component {
   render() {
     const coveredHealthIssues = [
       { title: 'High Cholesterol', icon: 'highCholesterol', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
-      { title: 'Arthritis', icon: 'arthritis', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
-      { title: 'Chronic Kidney Disease', icon: 'chronicKidney', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
-      { title: 'Pulmonary Disease', icon: 'pulmonary', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'Arthritis', icon: 'arthritis', cost: '$400,000 - 450,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'Chronic Kidney Disease', icon: 'chronicKidney', cost: '$600,000 - 750,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'Pulmonary Disease', icon: 'pulmonary', cost: '$500,000 - 650,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
     ];
 
     const notCoveredHealthIssues = [
-      { title: 'Ischemic Heart Disease', icon: 'heartDisease', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
-      { title: 'High Blood Pressure', icon: 'bloodPressure', cost: '$300,000 - 500,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'Ischemic Heart Disease', icon: 'heartDisease', cost: '$800,000 - 900,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
+      { title: 'High Blood Pressure', icon: 'bloodPressure', cost: '$650,000 - 700,000', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since'},
     ];
 
     return (
@@ -45,11 +45,11 @@ export default class ReportScreen extends React.Component {
           <Image style={{marginRight: 10, marginBottom: 10}} source={tickImg}></Image>
           <Text style={styles.cover_header}>Covered By Plan</Text>
         </View>
-        { coveredHealthIssues.map(issue => {
+        { coveredHealthIssues.map((issue, i) => {
           return (
-            <IconBlockView iconName={issue.icon}>
+            <IconBlockView key={i} iconName={issue.icon}>
               <Text style={styles.issue_title}>{issue.title}</Text>
-              <Text style={styles.issue_cost}>{issue.cost}</Text>
+              <Text style={styles.issue_cost}>Medical Cost: {issue.cost}</Text>
               <Text style={styles.issue_description}>{issue.description}</Text>
             </IconBlockView>
           )
@@ -59,11 +59,11 @@ export default class ReportScreen extends React.Component {
           <Image style={{marginRight: 10, marginBottom: 10}} source={crossImg}></Image>
           <Text style={styles.not_cover_header}>Not Covered By Plan</Text>
         </View>
-        { notCoveredHealthIssues.map(issue => {
+        { notCoveredHealthIssues.map((issue, i) => {
           return (
-            <IconBlockView iconName={issue.icon}>
+            <IconBlockView key={i} iconName={issue.icon}>
               <Text style={styles.not_issue_title}>{issue.title}</Text>
-              <Text style={styles.issue_cost}>{issue.cost}</Text>
+              <Text style={styles.issue_cost}>Medical Cost: {issue.cost}</Text>
               <Text style={styles.issue_description}>{issue.description}</Text>
             </IconBlockView>
           )
@@ -130,9 +130,13 @@ const styles = StyleSheet.create({
     color: '#5f5f5f',
   },
   issue_title: {
-    fontSize: 16,
+    fontSize: 17,
     color: Colors.successColor,
     fontWeight: 'bold'
+  },
+  issue_cost: {
+    fontWeight: 'bold',
+    marginBottom: 3
   },
   not_issue_title: {
     fontSize: 16,
