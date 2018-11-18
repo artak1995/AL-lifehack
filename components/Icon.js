@@ -9,6 +9,11 @@ const pulmonary = require('../assets/images/pul.png');
 const heartDisease = require('../assets/images/heart.png');
 const bloodPressure = require('../assets/images/highblood.png');
 
+const breakfastRecommendations = require('../assets/images/breakfast-recommendations.png');
+const diet = require('../assets/images/diet.png');
+const exercise = require('../assets/images/exercise.png');
+const supplements = require('../assets/images/supplements.png');
+
 const styles = {
   icon: {
     width: 98,
@@ -22,17 +27,22 @@ const sources = {
   chronicKidney,
   pulmonary,
   heartDisease,
-  bloodPressure
+  bloodPressure,
+  breakfastRecommendations,
+  diet,
+  exercise,
+  supplements,
 }
 
 export default class Icon extends React.Component {
   render() {
     const {
       iconName,
+      style,
     } = this.props;
 
     return (
-      <Image source={sources[iconName]} style={styles.icon}></Image>
+      <Image source={sources[iconName]} style={style || styles.icon}></Image>
     );
   }
 }
